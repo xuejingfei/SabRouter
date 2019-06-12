@@ -7,4 +7,4 @@ package com.xjf.sabrouter.annotation
  */
 @Target(AnnotationTarget.ANNOTATION_CLASS)
 @Retention(AnnotationRetention.BINARY)
-annotation class ServiceImp
+annotation class ServiceImpl
