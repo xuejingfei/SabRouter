@@ -1,1 +1,1 @@
-include ':app', ':sabrouter'
+include ':app', ':sabrouter', ':sabrouterPlugin'
