@@ -1,4 +1,5 @@
 apply plugin: 'java-gradle-plugin' //应用java-gradle-plugin插件
+apply plugin: 'maven'
 
 gradlePlugin {
     plugins {
@@ -10,7 +11,8 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation 'com.android.tools.build:gradle:3.0.1' //应用的gradle版本
+    implementation 'com.android.tools.build:gradle:3.0.1'
+    //应用的gradle版本
     implementation('com.quinn.hunter:hunter-transform:0.9.2') { //使用hunter框架
         exclude group: 'com.android.tools.build' //排除hunter带来的gradle传递依赖，以便自定义应用的gradle版本
     }
@@ -20,4 +22,18 @@ repositories {
     google()
     jcenter()
     mavenCentral()
+}
+
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //GVA的参数
+            pom.groupId = 'com.xjf.plugin'//组id
+            pom.artifactId = 'sabrouter'//名称
+            pom.version = '1.0.13'//版本号
+            repository(url: uri('../repo'))//发布的目录
+        }
+    }
 }

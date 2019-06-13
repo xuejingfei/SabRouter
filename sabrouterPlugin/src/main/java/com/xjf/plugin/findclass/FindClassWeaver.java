@@ -1,7 +1,7 @@
-package com.xjf.plugin;
+package com.xjf.plugin.findclass;
 
 import com.quinn.hunter.transform.asm.BaseWeaver;
-import jdk.internal.org.objectweb.asm.Opcodes;
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 
@@ -12,11 +12,11 @@ import org.objectweb.asm.ClassWriter;
  * <p>
  * Date：2019-06-12 22:28
  */
-public class SabRouterWeaver extends BaseWeaver {
+public class FindClassWeaver extends BaseWeaver {
 
     @Override
     protected ClassVisitor wrapClassWriter(ClassWriter classWriter) {
-        return new SabRouterClassVisitor(Opcodes.ASM5,classWriter);
+        return new FindTargetClassAdapter(Opcodes.ASM5,classWriter);
     }
 
     /**

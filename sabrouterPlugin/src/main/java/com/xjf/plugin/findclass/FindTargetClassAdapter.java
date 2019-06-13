@@ -1,35 +1,25 @@
-package com.xjf.plugin;
+package com.xjf.plugin.findclass;
 
 
+import com.xjf.plugin.ScanSetting;
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 /**
  * Author：xuejingfei
  * <p>
- * Description：
+ * Description： 第一次遍历项目中所有的类，找到目标类
  * <p>
  * Date：2019-06-12 22:44
  */
-public class SabRouterClassVisitor extends ClassVisitor {
+public class FindTargetClassAdapter extends ClassVisitor {
     private String[]  interfaces;
-    private List moduleApplications = new ArrayList<String>();
-    private Map serviceImplMaps = new HashMap<String, String>();
-
     private String className;
 
-    public SabRouterClassVisitor(int api) {
-        super(api);
-    }
 
-    public SabRouterClassVisitor(int api, ClassVisitor cv) {
+    public FindTargetClassAdapter(int api, ClassVisitor cv) {
         super(api, cv);
     }
 
@@ -44,17 +34,18 @@ public class SabRouterClassVisitor extends ClassVisitor {
     @Override
     public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
         switch (desc) {
-            case "ModuleSpec":
-                moduleApplications.add(className);
+            case ScanSetting.ModuleSpec:
+                System.out.println("moduleApplication" + className);
+                ScanSetting.moduleApplications.add(className);
                 break;
-            case "ServiceImpl":
+            case ScanSetting.ServiceImpl:
                 for(String inter:interfaces){
-                    serviceImplMaps.put(inter,className);
+                    System.out.println("serviceImpl" + inter + className);
+                    ScanSetting.serviceImplMaps.put(inter,className);
                 }
                 break;
             default:
                 break;
-
         }
         return super.visitAnnotation(desc, visible);
     }

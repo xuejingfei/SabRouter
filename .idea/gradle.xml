@@ -8,7 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/api" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/moduleA" />
+            <option value="$PROJECT_DIR$/moduleB" />
             <option value="$PROJECT_DIR$/sabrouter" />
             <option value="$PROJECT_DIR$/sabrouterPlugin" />
           </set>

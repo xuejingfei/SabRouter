@@ -86,7 +86,7 @@ class SabRouterManager : SabRouterInterface {
 
 
     companion object {
-        private val TAG = SabRouterManager.javaClass.name
+        private val TAG = SabRouterManager::class.java.name
 
         @JvmStatic
         val instance:SabRouterManager by lazy {

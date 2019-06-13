@@ -6,6 +6,6 @@ package com.xjf.sabrouter.annotation
  * create at 19-6-12
  */
 
-@Target(AnnotationTarget.ANNOTATION_CLASS)
+@Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.BINARY)
 annotation class ModuleSpec
