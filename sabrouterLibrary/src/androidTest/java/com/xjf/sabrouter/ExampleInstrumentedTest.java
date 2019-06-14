@@ -1,11 +1,16 @@
 package com.xjf.sabrouter;
 
+import android.app.Application;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -16,11 +21,15 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+    //module和moduleService 之前的映射关系哈希表
+    private Map<Class,Class> serviceImplMap = new HashMap<>();
+    private ArrayList<Application> moduleApplication = new ArrayList<>();
 
-        assertEquals("com.xjf.sabrouter.test", appContext.getPackageName());
+
+
+    @Test
+    public void init() throws ClassNotFoundException {
+        serviceImplMap.put(String.class,String.class);
+        moduleApplication.add(new Application());
     }
 }

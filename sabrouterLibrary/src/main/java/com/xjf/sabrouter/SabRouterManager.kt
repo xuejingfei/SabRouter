@@ -26,6 +26,11 @@ class SabRouterManager : SabRouterInterface {
     private val serviceImplInstanceMap = HashMap<Class<*>, Any>()
 
 
+    init {
+
+        moduleApplication.add(Application())
+    }
+
     override fun attachBaseContext(context: Context) {
         moduleApplication.forEach {
             val attachBaseContext =
@@ -71,16 +76,16 @@ class SabRouterManager : SabRouterInterface {
      * 获取实现类
      */
     @Synchronized
-    public fun <T> getService(classType: Class<T>):T? {
-        Log.d(TAG,serviceImplInstanceMap.size.toString())
+    public fun <T> getService(classType: Class<T>): T? {
+        Log.d(TAG, serviceImplInstanceMap.size.toString())
         val serviceInstance = serviceImplInstanceMap[classType]
         serviceInstance?.let {
             return serviceInstance as T
         } ?: serviceImplMap[classType]?.let {
-            return (it.newInstance() as T) .apply {
+            return (it.newInstance() as T).apply {
                 serviceImplInstanceMap[classType] = this as Any
             }
-        } ?:Log.e(TAG,"no ${classType.name} type ,please checkout your code---")
+        } ?: Log.e(TAG, "no ${classType.name} type ,please checkout your code---")
         return null
     }
 
@@ -89,7 +94,7 @@ class SabRouterManager : SabRouterInterface {
         private val TAG = SabRouterManager::class.java.name
 
         @JvmStatic
-        val instance:SabRouterManager by lazy {
+        val getInstance: SabRouterManager by lazy {
             SabRouterManager()
         }
     }

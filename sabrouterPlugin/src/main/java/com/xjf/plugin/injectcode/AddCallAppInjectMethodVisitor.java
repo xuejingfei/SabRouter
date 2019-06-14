@@ -34,7 +34,7 @@ public class AddCallAppInjectMethodVisitor extends MethodVisitor {
             case Opcodes.LRETURN:
             case Opcodes.DRETURN:
             case Opcodes.RETURN:
-                mv.visitMethodInsn(Opcodes.INVOKESTATIC, ScanSetting.ServiceManager, "instance", "()L${ScanSetting.ServiceManager};", false);
+                mv.visitMethodInsn(Opcodes.INVOKESTATIC, ScanSetting.ServiceManager, "getInstance", "()L"+ScanSetting.ServiceManager +";", false);
                 if (mALoad) {
                     mv.visitVarInsn(Opcodes.ALOAD, 1);
                 }

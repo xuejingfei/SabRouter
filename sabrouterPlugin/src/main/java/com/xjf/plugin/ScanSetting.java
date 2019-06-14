@@ -16,10 +16,9 @@ public class ScanSetting {
     public static final String ServiceImpl = "Lcom/xjf/sabrouter/annotation/ServiceImpl;";
     public static final String AppSpec = "Lcom/xjf/sabrouter/annotation/AppSpec;";
 
-    public static final String ServiceManager = "com.xjf.sabrouter.SabRouterManager";
+    public static final String ServiceManager = "com/xjf/sabrouter/SabRouterManager";
 
-    public  static List moduleApplications = new ArrayList<String>();
-    public static Map serviceImplMaps = new HashMap<String, String>();
-
+    public static ArrayList<String> moduleApplications = new ArrayList();
+    public static HashMap<String,String>  serviceImplMaps = new HashMap();
 
 }

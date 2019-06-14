@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         tv_skip_A.setOnClickListener {
-            SabRouterManager.instance.getService(ModuleAInterface::class.java)?.skipA(this)
+            SabRouterManager.getInstance.getService(ModuleAInterface::class.java)?.skipA(this)
         }
     }
 }

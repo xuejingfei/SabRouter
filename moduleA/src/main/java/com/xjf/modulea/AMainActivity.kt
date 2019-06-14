@@ -16,7 +16,7 @@ class AMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_activity_main)
         tv_skip_B.setOnClickListener {
-            SabRouterManager.instance.getService(ModuleBInterface::class.java)?.skipB(this)
+            SabRouterManager.getInstance.getService(ModuleBInterface::class.java)?.skipB(this)
         }
     }
 

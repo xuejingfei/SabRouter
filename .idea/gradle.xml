@@ -12,7 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/moduleA" />
             <option value="$PROJECT_DIR$/moduleB" />
-            <option value="$PROJECT_DIR$/sabrouter" />
+            <option value="$PROJECT_DIR$/sabrouterLibrary" />
             <option value="$PROJECT_DIR$/sabrouterPlugin" />
           </set>
         </option>
