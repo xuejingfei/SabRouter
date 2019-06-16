@@ -4,7 +4,6 @@ import com.xjf.plugin.ScanSetting;
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
 
 /**
  * description: 植入代码code
@@ -36,24 +35,24 @@ public class CodeInjectAdapter extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor methodVisitor = super.visitMethod(access, name, desc, signature, exceptions);
-//        if (isAppModule) {
-//            System.out.println("appModule" +  name + desc);
-//            switch (name + desc) {
-//                case "onCreate()V":
-//                    return new AddCallAppInjectMethodVisitor(methodVisitor,name,desc,false,false);
-//                case "attachBaseContext(Landroid/content/Context;)V":
-//                    return new AddCallAppInjectMethodVisitor(methodVisitor,name,desc,true,false);
-//                case "onConfigurationChanged(Landroid/content/res/Configuration;)V":
-//                    return new AddCallAppInjectMethodVisitor(methodVisitor,name,desc,true,false);
-//                case "onLowMemory()V":
-//                    return new AddCallAppInjectMethodVisitor(methodVisitor,name,desc,false,false);
-//                case "onTerminate()V":
-//                    return new AddCallAppInjectMethodVisitor(methodVisitor,name,desc,false,false);
-//                case "onTrimMemory(I)V":
-//                    return new AddCallAppInjectMethodVisitor(methodVisitor,name,desc,false,true);
-//            }
-//        }
-        if(isSabRouterManager && access==1 && name.equals("<init>")  && desc.equals("()V")) {
+        if (isAppModule) {
+            System.out.println("appModule" +  name + desc);
+            switch (name + desc) {
+                case "onCreate()V":
+                    return new AddCallAppInjectMethodVisitor(methodVisitor,access,"onCreate","()V",false,false);
+                case "attachBaseContext(Landroid/content/Context;)V":
+                    return new AddCallAppInjectMethodVisitor(methodVisitor,access,"attachBaseContext","(Landroid/content/Context;)V",true,false);
+                case "onConfigurationChanged(Landroid/content/res/Configuration;)V":
+                    return new AddCallAppInjectMethodVisitor(methodVisitor,access,"onConfigurationChanged","(Landroid/content/res/Configuration;)V",true,false);
+                case "onLowMemory()V":
+                    return new AddCallAppInjectMethodVisitor(methodVisitor,access,"onLowMemory","()V",false,false);
+                case "onTerminate()V":
+                    return new AddCallAppInjectMethodVisitor(methodVisitor,access,"onTerminate","()V",false,false);
+                case "onTrimMemory(I)V":
+                    return new AddCallAppInjectMethodVisitor(methodVisitor,access,"onTrimMemory","(I)V",false,true);
+            }
+        }
+        if(isSabRouterManager && access==2 && name.equals("<init>")  && desc.equals("()V")) {
             System.out.println("SabRouterManager" +  name + desc + access);
             return new AddCodeToConstructorVisitor(name,access,desc,methodVisitor);
         }

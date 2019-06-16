@@ -1,9 +1,9 @@
 package com.xjf.sabrouter
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import com.xjf.api.ModuleAInterface
-
+import com.xjf.api.ModuleBInterface
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         tv_skip_A.setOnClickListener {
-            SabRouterManager.getInstance.getService(ModuleAInterface::class.java)?.skipA(this)
+            SabRouterManager.getInstance().getService(ModuleAInterface::class.java)?.skipA(this)
         }
     }
 }

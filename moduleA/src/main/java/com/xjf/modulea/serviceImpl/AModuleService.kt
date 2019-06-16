@@ -1,7 +1,7 @@
 package com.xjf.moduleb.serviceImpl
 
 import android.content.Context
-import com.xjf.api.ModuleBInterface
+import com.xjf.api.ModuleAInterface
 import com.xjf.modulea.AMainActivity
 import com.xjf.sabrouter.annotation.ServiceImpl
 
@@ -11,8 +11,8 @@ import com.xjf.sabrouter.annotation.ServiceImpl
  * create at 19-6-13
  */
 @ServiceImpl
-class AModuleService : ModuleBInterface {
-    override fun skipB(context:Context) {
+class AModuleService : ModuleAInterface {
+    override fun skipA(context:Context) {
         AMainActivity.startActivityB(context)
     }
 

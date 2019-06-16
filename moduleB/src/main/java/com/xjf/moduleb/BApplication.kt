@@ -1,9 +1,9 @@
 package com.xjf.moduleb
 
-import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import com.xjf.sabrouter.annotation.ModuleSpec
+import com.xjf.sabrouter.annotation.SabApplication
 
 /**
  * description: 专家个人信息界面
@@ -12,31 +12,23 @@ import com.xjf.sabrouter.annotation.ModuleSpec
  */
 
 @ModuleSpec
-class BApplication: Application() {
+class BApplication: SabApplication {
+    override fun attachBaseContext(base: Context?) {
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
     }
 
     override fun onCreate() {
-        super.onCreate()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
-        super.onConfigurationChanged(newConfig)
     }
-
 
     override fun onLowMemory() {
-        super.onLowMemory()
     }
 
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
+    override fun onTrimMemory(level:Int ) {
     }
-
     override fun onTerminate() {
-        super.onTerminate()
     }
 
 }

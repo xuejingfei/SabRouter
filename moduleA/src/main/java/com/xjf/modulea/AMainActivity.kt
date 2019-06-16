@@ -2,7 +2,6 @@ package com.xjf.modulea
 
 import android.content.Context
 import android.content.Intent
-import android.media.midi.MidiOutputPort
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import com.xjf.api.ModuleBInterface
@@ -16,7 +15,7 @@ class AMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_activity_main)
         tv_skip_B.setOnClickListener {
-            SabRouterManager.getInstance.getService(ModuleBInterface::class.java)?.skipB(this)
+            SabRouterManager.getInstance().getService(ModuleBInterface::class.java)?.skipB(this)
         }
     }
 

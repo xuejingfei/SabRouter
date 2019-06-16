@@ -41,20 +41,21 @@ public class AddCodeToConstructorVisitor extends LocalVariablesSorter implements
         //方法是否为基本类型
         System.out.println("modularization: insertApplicationAdd -> " + applicationName);
         mv.visitVarInsn(ALOAD, 0);
-        mv.visitFieldInsn(GETFIELD, ScanSetting.ServiceManager, "moduleApplication", "Ljava/util/ArrayList;");
+        mv.visitFieldInsn(GETFIELD, ScanSetting.ServiceManager, "moduleApplications", "Ljava/util/List;");
         mv.visitTypeInsn(NEW, applicationName);
         mv.visitInsn(DUP);
         mv.visitMethodInsn(INVOKESPECIAL, applicationName, "<init>", "()V", false);
-        mv.visitMethodInsn(INVOKEVIRTUAL, "java/util/ArrayList", "add", "(Ljava/lang/Object;)Z", false);
+        mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "add", "(Ljava/lang/Object;)Z", false);
         mv.visitInsn(POP);
     }
 
     private void insertServiceImpPut(String key, String value) {
+        System.out.println("modularization: insertApplicationAdd -> " + "key -->" + key + "value-->" +value);
         mv.visitVarInsn(ALOAD, 0);
-        mv.visitFieldInsn(GETFIELD, ScanSetting.ServiceManager, "serviceImplMap", "Ljava/util/HashMap;");
+        mv.visitFieldInsn(GETFIELD, ScanSetting.ServiceManager, "serviceImplMap", "Ljava/util/Map;");
         mv.visitLdcInsn(Type.getObjectType(key));
         mv.visitLdcInsn(Type.getObjectType(value));
-        mv.visitMethodInsn(INVOKEINTERFACE, "java/util/HashMap", "put", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", true);
+        mv.visitMethodInsn(INVOKEINTERFACE, "java/util/Map", "put", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", true);
         mv.visitInsn(POP);
     }
 
